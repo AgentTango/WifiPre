@@ -69,7 +69,7 @@ class HomePage extends StatelessWidget {
                         trailing: new RaisedButton(
                             onPressed: () {
                               Scaffold.of(context).showSnackBar(
-                                  SnackBar(content: Text("sup ?")));
+                                  SnackBar(content: Text("Button Pressed")));
                             },
                             child: new Text("Submit"))
                     ),
@@ -85,7 +85,7 @@ class HomePage extends StatelessWidget {
                         trailing: new RaisedButton(
                             onPressed: () {
                               Scaffold.of(context).showSnackBar(
-                                  SnackBar(content: Text("sup ?")));
+                                  SnackBar(content: Text("Button Pressed")));
                             },
                             child: new Text("Submit"))
                     ),
@@ -101,7 +101,7 @@ class HomePage extends StatelessWidget {
                         trailing: new RaisedButton(
                             onPressed: () {
                               Scaffold.of(context).showSnackBar(
-                                  SnackBar(content: Text("sup ?")));
+                                  SnackBar(content: Text("Button Pressed")));
                             },
                             child: new Text("Submit"))
                     ),
@@ -117,7 +117,7 @@ class HomePage extends StatelessWidget {
                         trailing: new RaisedButton(
                             onPressed: () {
                               Scaffold.of(context).showSnackBar(
-                                  SnackBar(content: Text("sup ?")));
+                                  SnackBar(content: Text("Button Pressed")));
                             },
                             child: new Text("Submit"))
                     ),
