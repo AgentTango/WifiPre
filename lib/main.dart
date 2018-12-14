@@ -55,38 +55,77 @@ class HomePage extends StatelessWidget {
             ),
           ];
         },
-        body: ListView(
-          children: <Widget>[
-            ExpansionTile(
-              leading:  Icon(Icons.wifi),
-              title: new Text("Uno"),
-              trailing: Icon(Icons.arrow_drop_down),
-              children: <Widget>[],
-            ),
-            ExpansionTile(
-              leading:  Icon(Icons.wifi),
-              title: new Text("Dos"),
-              trailing: Icon(Icons.arrow_drop_down),
-              children: <Widget>[],
-            ),
-            ExpansionTile(
-              leading:  Icon(Icons.wifi),
-              title: new Text("Tres"),
-              trailing: Icon(Icons.arrow_drop_down),
-              children: <Widget>[],
-            ),
-            ExpansionTile(
-              leading:  Icon(Icons.wifi),
-              title: new Text("Quatro"),
-              trailing: Icon(Icons.arrow_drop_down),
-              children: [
-                new ListTile(
-                  title: new TextField(obscureText: true,),
-                  trailing: new RaisedButton(onPressed: ()=> Scaffold.of(context).showSnackBar(new SnackBar(content: Text("Hello"))),child: Text("Submit"),),
+        body: Builder(
+          builder: (BuildContext context) {
+            return ListView(
+              children: <Widget>[
+                ExpansionTile(
+                  leading: Icon(Icons.wifi),
+                  title: new Text("Uno"),
+                  trailing: Icon(Icons.arrow_drop_down),
+                  children: [
+                    new ListTile(
+                        title: new TextField(obscureText: true,),
+                        trailing: new RaisedButton(
+                            onPressed: () {
+                              Scaffold.of(context).showSnackBar(
+                                  SnackBar(content: Text("sup ?")));
+                            },
+                            child: new Text("Submit"))
+                    ),
+                  ],
+                ),
+                ExpansionTile(
+                  leading: Icon(Icons.wifi),
+                  title: new Text("Dos"),
+                  trailing: Icon(Icons.arrow_drop_down),
+                  children: [
+                    new ListTile(
+                        title: new TextField(obscureText: true,),
+                        trailing: new RaisedButton(
+                            onPressed: () {
+                              Scaffold.of(context).showSnackBar(
+                                  SnackBar(content: Text("sup ?")));
+                            },
+                            child: new Text("Submit"))
+                    ),
+                  ],
+                ),
+                ExpansionTile(
+                  leading: Icon(Icons.wifi),
+                  title: new Text("Tres"),
+                  trailing: Icon(Icons.arrow_drop_down),
+                  children: [
+                    new ListTile(
+                        title: new TextField(obscureText: true,),
+                        trailing: new RaisedButton(
+                            onPressed: () {
+                              Scaffold.of(context).showSnackBar(
+                                  SnackBar(content: Text("sup ?")));
+                            },
+                            child: new Text("Submit"))
+                    ),
+                  ],
+                ),
+                ExpansionTile(
+                  leading: Icon(Icons.wifi),
+                  title: new Text("Quatro"),
+                  trailing: Icon(Icons.arrow_drop_down),
+                  children: [
+                    new ListTile(
+                        title: new TextField(obscureText: true,),
+                        trailing: new RaisedButton(
+                            onPressed: () {
+                              Scaffold.of(context).showSnackBar(
+                                  SnackBar(content: Text("sup ?")));
+                            },
+                            child: new Text("Submit"))
+                    ),
+                  ],
                 ),
               ],
-            ),
-          ],
+            );
+          }
         )
       ),
     );
