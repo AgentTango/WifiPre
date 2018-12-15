@@ -8,7 +8,6 @@ void main() {
 }
 
 class HomePage extends StatelessWidget {
-  @override
 //  Widget build(BuildContext context) {
 //    return new Scaffold(
 //        body: new Column(
@@ -36,6 +35,7 @@ class HomePage extends StatelessWidget {
         headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
           return <Widget>[
             SliverAppBar(
+              //TODO : Have it like the History of Everything app's Title.
               expandedHeight: 200.0,
               floating: false,
               pinned: true,
@@ -59,69 +59,75 @@ class HomePage extends StatelessWidget {
           builder: (BuildContext context) {
             return ListView(
               children: <Widget>[
-                ExpansionTile(
-                  leading: Icon(Icons.wifi),
-                  title: new Text("Uno"),
-                  trailing: Icon(Icons.arrow_drop_down),
-                  children: [
-                    new ListTile(
-                        title: new TextField(obscureText: true,),
-                        trailing: new RaisedButton(
-                            onPressed: () {
-                              Scaffold.of(context).showSnackBar(
-                                  SnackBar(content: Text("Button Pressed")));
-                            },
-                            child: new Text("Submit"))
-                    ),
-                  ],
+                new Card(
+                  child: new ListTile(
+                    title: Text("Uno", overflow: TextOverflow.fade,),
+                    subtitle: null, //Say Connected if Connected to this bitch try ? : code block
+                    leading: Icon(Icons.wifi_lock),
+                    trailing: Icon(Icons.lock_outline),
+                    onTap: (){
+                      //TODO : check if any password is required, if it is the following has to be called
+                      //TODO : convert this into a function, which takes name and the requiredPassword fields/strings ?
+                      showDialog(context: context,
+                          builder: (_) => new AlertDialog(
+                            content: new Column(
+                              mainAxisSize: MainAxisSize.min,
+                              children: <Widget>[
+                                new Text("Type the password :"),
+                                new TextField(obscureText: true,),
+                              ],
+                            ),
+                            actions: <Widget>[
+                              new RaisedButton(
+                                onPressed: () => Navigator.pop(context),
+                                child: Text("Cancel"),
+                                color: Colors.redAccent,
+                                textColor: Colors.white,),
+                              new RaisedButton(
+                                onPressed: () => Navigator.pop(context),
+                                child: Text("Submit"),
+                                color: Colors.blueAccent,
+                                textColor: Colors.white,)
+                            ],
+                          )
+                      );
+                    },
+                  ),
                 ),
-                ExpansionTile(
-                  leading: Icon(Icons.wifi),
-                  title: new Text("Dos"),
-                  trailing: Icon(Icons.arrow_drop_down),
-                  children: [
-                    new ListTile(
-                        title: new TextField(obscureText: true,),
-                        trailing: new RaisedButton(
-                            onPressed: () {
-                              Scaffold.of(context).showSnackBar(
-                                  SnackBar(content: Text("Button Pressed")));
-                            },
-                            child: new Text("Submit"))
-                    ),
-                  ],
-                ),
-                ExpansionTile(
-                  leading: Icon(Icons.wifi),
-                  title: new Text("Tres"),
-                  trailing: Icon(Icons.arrow_drop_down),
-                  children: [
-                    new ListTile(
-                        title: new TextField(obscureText: true,),
-                        trailing: new RaisedButton(
-                            onPressed: () {
-                              Scaffold.of(context).showSnackBar(
-                                  SnackBar(content: Text("Button Pressed")));
-                            },
-                            child: new Text("Submit"))
-                    ),
-                  ],
-                ),
-                ExpansionTile(
-                  leading: Icon(Icons.wifi),
-                  title: new Text("Quatro"),
-                  trailing: Icon(Icons.arrow_drop_down),
-                  children: [
-                    new ListTile(
-                        title: new TextField(obscureText: true,),
-                        trailing: new RaisedButton(
-                            onPressed: () {
-                              Scaffold.of(context).showSnackBar(
-                                  SnackBar(content: Text("Button Pressed")));
-                            },
-                            child: new Text("Submit"))
-                    ),
-                  ],
+                new Card(
+                  child: new ListTile(
+                    title: Text("Uno", overflow: TextOverflow.fade,),
+                    subtitle: null, //Say Connected if Connected to this bitch try ? : code block
+                    leading: Icon(Icons.wifi_lock),
+                    trailing: Icon(Icons.lock_outline),
+                    onTap: (){
+                      //TODO : check if any password is required, if it is the following has to be called
+                      //TODO : convert this into a function, which takes name and the requiredPassword fields/strings ?
+                      showDialog(context: context,
+                        builder: (_) => new AlertDialog(
+                          content: new Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: <Widget>[
+                              new Text("Type the password :"),
+                              new TextField(obscureText: true,),
+                            ],
+                          ),
+                          actions: <Widget>[
+                            new RaisedButton(
+                              onPressed: () => Navigator.pop(context),
+                              child: Text("Cancel"),
+                              color: Colors.redAccent,
+                              textColor: Colors.white,),
+                            new RaisedButton(
+                              onPressed: () => Navigator.pop(context),
+                              child: Text("Submit"),
+                              color: Colors.blueAccent,
+                              textColor: Colors.white,)
+                          ],
+                        )
+                      );
+                    },
+                  ),
                 ),
               ],
             );
