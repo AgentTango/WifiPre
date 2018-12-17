@@ -9,8 +9,23 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: new Scaffold(
+        drawer: Drawer(
+          child: Column(
+            children: <Widget>[
+              Expanded(
+                child: ListView(
+                  children: <Widget>[
+                    new ListTile(title: Text("Entry One"),trailing: Icon(Icons.terrain),),
+                    new ListTile(title: Text("Entry Two"),trailing: Icon(Icons.terrain),),
+                    new ListTile(title: Text("Entry Three"),trailing: Icon(Icons.terrain),)
+                  ],
+                ),
+              )
+            ],
+          ),
+        ),
         appBar: new AppBar(
-          leading: Icon(Icons.menu),
+          leading: IconButton(icon : Icon(Icons.menu),onPressed: null,),
           title: Text("Sign-In to Network"),
         ),
         body: new AppBody(),
