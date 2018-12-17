@@ -1,38 +1,48 @@
 import 'package:flutter/material.dart';
+
 void main () {
-  runApp(MaterialApp(
-    title: "Wifi Selector",
-    home: new Scaffold(
-      appBar: AppBar(title: Text("Wifi Selector"),leading: IconButton(icon: Icon(Icons.menu), onPressed: null),),
-      body: new Container(
-        child: SettingsWidget(),
-      ),
-    ),
-  ));
+  runApp(new MyApp());
 }
 
-class SettingsWidget extends StatefulWidget {
-  SettingsWidget({Key key}) : super(key: key);
-
+class MyApp extends StatelessWidget {
   @override
-  _SettingsWidgetState createState() => new _SettingsWidgetState();
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: new Scaffold(
+        appBar: new AppBar(
+          leading: Icon(Icons.menu),
+          title: Text("Sign-In to Network"),
+        ),
+        body: new AppBody(),
+      ),
+    );
+  }
 }
 
-class _SettingsWidgetState extends State<SettingsWidget> {
+class AppBody extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    return AppBodyState();
+  }
+}
 
+class AppBodyState extends State<AppBody> {
   List _cities =
   ["Cluj-Napoca", "Bucuresti", "Timisoara", "Brasov", "Constanta"];
 
   List<DropdownMenuItem<String>> _dropDownMenuItems;
   String _currentCity;
-
+  void changedDropDownItem(String selectedCity) {
+    setState(() {
+      _currentCity = selectedCity;
+    });
+  }
   @override
   void initState() {
     _dropDownMenuItems = getDropDownMenuItems();
     _currentCity = _dropDownMenuItems[0].value;
     super.initState();
   }
-
   List<DropdownMenuItem<String>> getDropDownMenuItems() {
     List<DropdownMenuItem<String>> items = new List();
     for (String city in _cities) {
@@ -43,53 +53,40 @@ class _SettingsWidgetState extends State<SettingsWidget> {
     }
     return items;
   }
-
-  @override
   Widget build(BuildContext context) {
-    return new Container(
-      child: Card(
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
-        color: Colors.white,
-        elevation: 4.0,
+    return SafeArea(
         child: Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.all(16.0),
           child: new Column(
-            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              new Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: <Widget>[
-                  new Text("Select the wifi :"),
-                  new DropdownButton(
-                    value: _currentCity,
-                    items: _dropDownMenuItems,
-                    onChanged: changedDropDownItem,
-                  ),
-                ],
+              new Text("SSID",style: TextStyle(fontWeight: FontWeight.bold),),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: DropdownButtonFormField(items: _dropDownMenuItems,decoration: InputDecoration(border: OutlineInputBorder()),),
               ),
-              new ListTile(
-                  title: new TextField(
-                    obscureText: true,
-                    decoration: InputDecoration.collapsed(hintText: "Enter Password",),
+              new Text("PassPhrase",style: TextStyle(fontWeight: FontWeight.bold),),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: new TextField(
+                  obscureText: true,
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(),
                   ),
-                  trailing: new RaisedButton(
-                      onPressed: () {
-                        Scaffold.of(context).showSnackBar(
-                            SnackBar(content: Text("Button Pressed")));
-                      },
-                      child: new Text("Submit"))
+                ),
               ),
+              new RaisedButton(
+                  onPressed: () {
+                    Scaffold.of(context).showSnackBar(
+                        SnackBar(content: Text("Button Pressed")));
+                  },
+                  child: new Text("Submit"),
+                color: Colors.blue,
+                textColor: Colors.white,
+              )
             ],
           ),
-        ),
-      ),
+        )
     );
   }
-
-  void changedDropDownItem(String selectedCity) {
-    setState(() {
-      _currentCity = selectedCity;
-    });
-  }
-
 }
